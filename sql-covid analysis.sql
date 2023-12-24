@@ -107,7 +107,6 @@ WHERE continent IS NOT NULL
 GROUP BY location
 ORDER BY highest_death_count DESC;
 
-
 # Ranking countries in each continent by death rate using dense_rank
 WITH cte AS(
 SELECT continent,location,SUM(new_deaths) AS total_deaths,SUM(new_cases) AS total_cases,CONCAT(ROUND(SUM(new_deaths)/SUM(new_cases)*100,2),'%') AS death_rate
@@ -124,7 +123,6 @@ FROM coviddeath
 WHERE continent IS NOT NULL
 GROUP BY continent,location
 ORDER BY MAX(total_cases/population) DESC;
-
 
 # Create a view to retrieve information from the two tables
 CREATE VIEW `dea_vac` AS
